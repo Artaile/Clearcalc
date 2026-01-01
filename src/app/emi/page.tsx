@@ -56,7 +56,6 @@ export default function EMICalculator() {
             totalInterest: totalInterest,
             processingFee: feeAmount,
             totalPayment: totalPayment,
-            totalPayment: totalPayment,
             totalAmountPayable: totalAmountPayable
         });
 
@@ -182,7 +181,7 @@ export default function EMICalculator() {
                                         <Tooltip
                                             contentStyle={{ backgroundColor: "#171717", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "8px" }}
                                             itemStyle={{ color: "#fff" }}
-                                            formatter={(value: number) => currencyFormatter(value)}
+                                            formatter={(value: number | undefined) => value !== undefined ? currencyFormatter(value) : ""}
                                         />
                                         <Legend verticalAlign="bottom" height={36} iconType="circle" />
                                     </PieChart>
@@ -331,7 +330,7 @@ export default function EMICalculator() {
                                         <Tooltip
                                             contentStyle={{ backgroundColor: "#171717", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "8px" }}
                                             itemStyle={{ color: "#fff" }}
-                                            formatter={(value: number) => currencyFormatter(value)}
+                                            formatter={(value: number | undefined) => value !== undefined ? currencyFormatter(value) : ""}
                                         />
                                         <Legend verticalAlign="bottom" height={36} iconType="circle" />
                                     </PieChart>
