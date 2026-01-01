@@ -10,6 +10,7 @@ import { Lightbulb, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
 
+
 export default function EMICalculator() {
     const [amount, setAmount] = useState("");
     const [rate, setRate] = useState("");
