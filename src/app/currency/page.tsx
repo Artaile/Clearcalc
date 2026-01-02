@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/Input";
 import { Card } from "@/components/ui/Card";
 import { SearchableSelect } from "@/components/ui/SearchableSelect";
 import { useState, useEffect } from "react";
-import { Loader2, ArrowRightLeft, CalendarClock } from "lucide-react";
+import { Loader2, ArrowRightLeft, CalendarClock, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getCurrencyLabel } from "@/lib/currencyData";
 
@@ -52,11 +52,7 @@ export default function CurrencyConverter() {
         fetchCurrencies();
     }, []);
 
-    // Effect to auto-calculate when dependencies change
-    useEffect(() => {
-        calculate();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [amount, from, to]);
+    // Removed auto-calculate useEffect
 
     const calculate = async () => {
         if (!amount || !from || !to) return;
@@ -85,85 +81,106 @@ export default function CurrencyConverter() {
     const swapCurrencies = () => {
         setFrom(to);
         setTo(from);
+        setResult(null); // Clear result on swap
     };
 
     return (
         <CalculatorLayout title="Currency Converter" description="Real-time global exchange rates">
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 relative">
 
                 {/* Inputs */}
-                <div className="flex flex-col gap-4 relative z-20">
+                <div className="flex flex-col gap-6 p-6 rounded-3xl bg-white/[0.02] border border-white/5 relative z-20">
                     <Input
                         label="Amount"
                         type="number"
                         placeholder="e.g. 100"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
+                        className="text-2xl font-medium"
                     />
 
-                    <div className="flex flex-col sm:flex-row gap-4 items-center sm:items-end">
-                        <SearchableSelect
-                            label="From"
-                            value={from}
-                            onChange={setFrom}
-                            options={currencies}
-                            placeholder="From Currency"
-                        />
-
-                        <div className="flex items-center justify-center pb-1">
-                            <Button
-                                size="icon"
-                                variant="ghost"
-                                onClick={swapCurrencies}
-                                className="rounded-full bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white border border-white/5 h-10 w-10 mt-6 sm:mt-0"
-                            >
-                                <ArrowRightLeft className="w-5 h-5" />
-                            </Button>
+                    {/* From/To/Swap Container */}
+                    <div className="flex flex-col sm:flex-row gap-0 sm:gap-6 items-center relative">
+                        <div className="w-full relative z-20">
+                            <SearchableSelect
+                                label="From"
+                                value={from}
+                                onChange={setFrom}
+                                options={currencies}
+                                placeholder="From Currency"
+                            />
                         </div>
 
-                        <SearchableSelect
-                            label="To"
-                            value={to}
-                            onChange={setTo}
-                            options={currencies}
-                            placeholder="To Currency"
-                        />
+                        {/* Center Swap Button - Fixed spacing for mobile */}
+                        <div className="relative flex items-center justify-center -my-3 sm:my-0 z-30 pointer-events-none">
+                            <span className="pointer-events-auto">
+                                <Button
+                                    size="icon"
+                                    variant="ghost"
+                                    onClick={swapCurrencies}
+                                    className="rounded-full bg-zinc-900 border border-zinc-700/50 text-zinc-400 hover:text-white hover:border-violet-500/50 hover:bg-violet-500 transition-all active:rotate-180 h-10 w-10 shadow-xl"
+                                >
+                                    <ArrowRightLeft className="w-4 h-4" />
+                                </Button>
+                            </span>
+                        </div>
+
+                        <div className="w-full relative z-20">
+                            <SearchableSelect
+                                label="To"
+                                value={to}
+                                onChange={setTo}
+                                options={currencies}
+                                placeholder="To Currency"
+                            />
+                        </div>
                     </div>
+
+                    {/* Added Convert Button */}
+                    <Button
+                        onClick={calculate}
+                        className="w-full h-14 text-lg font-bold bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-violet-400 hover:to-fuchsia-400 text-white shadow-lg shadow-violet-500/20"
+                    >
+                        Convert Currency
+                        <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
                 </div>
 
                 {/* Result */}
-                <AnimatePresence mode="wait">
-                    {result !== null && (
-                        <motion.div
-                            key={from + to + amount}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 10 }}
-                            className="flex flex-col gap-4"
-                        >
-                            <Card className="bg-purple-500/10 border-purple-500/20 flex flex-col items-center justify-center py-8 gap-3 relative overflow-hidden">
-                                <div className="absolute top-0 right-0 p-24 bg-purple-500/10 rounded-full blur-3xl -mr-12 -mt-12 pointer-events-none" />
+                <div className="relative z-10">
+                    <AnimatePresence mode="wait">
+                        {result !== null && (
+                            <motion.div
+                                key={from + to + amount}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                className="flex flex-col gap-4"
+                            >
+                                <Card className="bg-gradient-to-br from-violet-500/10 via-fuchsia-500/5 to-transparent border-violet-500/20 flex flex-col items-center justify-center py-8 gap-3 relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 p-24 bg-violet-500/10 rounded-full blur-3xl -mr-12 -mt-12 pointer-events-none" />
 
-                                <span className="text-zinc-400 text-sm font-medium uppercase tracking-wider">Converted Amount</span>
-                                <span className="text-4xl sm:text-5xl font-bold text-purple-400 text-center">
-                                    {new Intl.NumberFormat("en-US", { style: "currency", currency: to }).format(result)}
-                                </span>
+                                    <span className="text-zinc-400 text-sm font-medium uppercase tracking-wider">Converted Amount</span>
+                                    <span className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400 text-center px-4">
+                                        {new Intl.NumberFormat("en-US", { style: "currency", currency: to }).format(result)}
+                                    </span>
 
-                                <div className="flex items-center gap-2 mt-2 bg-black/20 px-4 py-2 rounded-full border border-white/5">
-                                    <span className="text-zinc-400 text-sm">Rate:</span>
-                                    <span className="text-zinc-200 font-mono">1 {from} = {rate?.toFixed(4)} {to}</span>
-                                </div>
-
-                                {lastUpdate && (
-                                    <div className="absolute bottom-3 right-4 flex items-center gap-1.5 text-[10px] text-zinc-600">
-                                        <CalendarClock className="w-3 h-3" />
-                                        <span>Updated: {lastUpdate}</span>
+                                    <div className="flex items-center gap-2 mt-2 bg-black/20 px-4 py-2 rounded-full border border-white/5">
+                                        <span className="text-zinc-400 text-sm">Rate:</span>
+                                        <span className="text-zinc-200 font-mono">1 {from} = {rate?.toFixed(4)} {to}</span>
                                     </div>
-                                )}
-                            </Card>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+
+                                    {lastUpdate && (
+                                        <div className="absolute bottom-3 right-4 flex items-center gap-1.5 text-[10px] text-zinc-600">
+                                            <CalendarClock className="w-3 h-3" />
+                                            <span>Updated: {lastUpdate}</span>
+                                        </div>
+                                    )}
+                                </Card>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
 
                 {initialLoading && (
                     <div className="flex items-center justify-center py-10 text-zinc-500">

@@ -4,15 +4,33 @@ import { CalculatorLayout } from "@/components/calculators/CalculatorLayout";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Card } from "@/components/ui/Card";
+import { SearchableSelect } from "@/components/ui/SearchableSelect";
 import { useState, useRef } from "react";
 import { constructPrompt, generateInsight } from "@/lib/ai";
-import { Lightbulb, Loader2, Share2 } from "lucide-react";
+import {
+    Lightbulb,
+    Loader2,
+    Share2,
+    Percent,
+    TrendingUp,
+    Lock,
+    RefreshCw,
+    PiggyBank,
+    ArrowRight
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { toPng } from "html-to-image";
 import { jsPDF } from "jspdf";
 
 type BankingType = "SI" | "CI" | "FD" | "RD" | "PPF";
+
+const FREQUENCY_OPTIONS = [
+    { label: "Annually", value: "1" },
+    { label: "Half-Yearly", value: "2" },
+    { label: "Quarterly", value: "4" },
+    { label: "Monthly", value: "12" },
+];
 
 export default function BankingCalculators() {
     const [type, setType] = useState<BankingType>("SI");
@@ -92,12 +110,12 @@ export default function BankingCalculators() {
         setLoading(false);
     };
 
-    const tabs: { id: BankingType, label: string }[] = [
-        { id: "SI", label: "Simple Interest" },
-        { id: "CI", label: "Compound Interest" },
-        { id: "FD", label: "Fixed Deposit" },
-        { id: "RD", label: "Recurring Deposit" },
-        { id: "PPF", label: "PPF" },
+    const tabs: { id: BankingType, label: string, icon: any }[] = [
+        { id: "SI", label: "Simple Interest", icon: Percent },
+        { id: "CI", label: "Compound Interest", icon: TrendingUp },
+        { id: "FD", label: "Fixed Deposit", icon: Lock },
+        { id: "RD", label: "Recurring Deposit", icon: RefreshCw },
+        { id: "PPF", label: "PPF", icon: PiggyBank },
     ];
 
     const currencyFormatter = (val: number) => new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(val);
@@ -187,188 +205,218 @@ export default function BankingCalculators() {
 
     return (
         <CalculatorLayout title="Banking" description="Calculate returns on investments">
-            <div className="flex flex-col gap-6">
-                {/* Tabs */}
-                <div className="flex flex-wrap gap-2 bg-black/20 p-1 rounded-xl">
-                    {tabs.map((tab) => (
-                        <button
-                            key={tab.id}
-                            onClick={() => { setType(tab.id); setResult(null); }}
-                            className={cn(
-                                "px-3 py-2 text-xs sm:text-sm font-medium rounded-lg transition-colors flex-1 min-w-[80px]",
-                                type === tab.id ? "bg-indigo-500 text-white shadow-lg" : "text-zinc-400 hover:text-white"
-                            )}
-                        >
-                            {tab.label}
-                        </button>
-                    ))}
+            <div className="flex flex-col gap-8">
+                {/* Scrollable Tabs */}
+                <div className="flex overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 gap-3 scrollbar-hide no-scrollbar snap-x z-30 relative [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                    {tabs.map((tab) => {
+                        const Icon = tab.icon;
+                        return (
+                            <button
+                                key={tab.id}
+                                onClick={() => { setType(tab.id); setResult(null); }}
+                                className={cn(
+                                    "flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border snap-center whitespace-nowrap",
+                                    type === tab.id
+                                        ? "bg-indigo-500 text-white border-indigo-400 shadow-[0_0_20px_-5px_rgba(99,102,241,0.4)]"
+                                        : "bg-white/5 text-zinc-400 border-white/5 hover:bg-white/10 hover:border-white/10 hover:text-white"
+                                )}
+                            >
+                                <Icon className="w-4 h-4" />
+                                {tab.label}
+                            </button>
+                        );
+                    })}
                 </div>
 
-                <div className="flex flex-col gap-4">
-                    <Input
-                        label={
-                            type === "RD" ? "Monthly Deposit (₹)" :
-                                type === "PPF" ? "Annual Contribution (₹)" :
-                                    "Principal Amount (₹)"
-                        }
-                        type="number"
-                        placeholder="e.g. 10,000"
-                        value={principal}
-                        onChange={(e) => setPrincipal(e.target.value)}
-                    />
-                    <Input
-                        label="Interest Rate (% p.a)"
-                        type="number"
-                        placeholder={type === "PPF" ? "e.g. 7.1" : "e.g. 7.5"}
-                        value={rate}
-                        onChange={(e) => setRate(e.target.value)}
-                    />
-                    <Input
-                        label="Duration (Years)"
-                        type="number"
-                        placeholder={type === "PPF" ? "Min 15 Years" : "e.g. 5"}
-                        value={time}
-                        onChange={(e) => setTime(e.target.value)}
-                    />
-
-                    <div className="pt-2">
+                <div className="flex flex-col gap-6 relative z-20">
+                    <div className="flex flex-col gap-6 p-6 rounded-3xl bg-white/[0.02] border border-white/5">
                         <Input
-                            label="Inflation Rate (% expected)"
+                            label={
+                                type === "RD" ? "Monthly Deposit (₹)" :
+                                    type === "PPF" ? "Annual Contribution (₹)" :
+                                        "Principal Amount (₹)"
+                            }
                             type="number"
-                            placeholder="e.g. 6.0 (Optional)"
-                            value={inflation}
-                            onChange={(e) => setInflation(e.target.value)}
-                            className="border-indigo-500/20 focus:border-indigo-500/50 placeholder:text-zinc-600"
+                            placeholder="e.g. 10,000"
+                            value={principal}
+                            onChange={(e) => setPrincipal(e.target.value)}
                         />
-                        <p className="text-xs text-zinc-500 mt-1 ml-1">
-                            Enter existing inflation to see the <strong>real value</strong> of your returns.
-                        </p>
+                        <div className="flex flex-col sm:flex-row gap-4">
+                            <Input
+                                label="Interest Rate (% p.a)"
+                                type="number"
+                                placeholder={type === "PPF" ? "e.g. 7.1" : "e.g. 7.5"}
+                                value={rate}
+                                onChange={(e) => setRate(e.target.value)}
+                                className="w-full"
+                            />
+                            <Input
+                                label="Duration (Years)"
+                                type="number"
+                                placeholder={type === "PPF" ? "Min 15 Years" : "e.g. 5"}
+                                value={time}
+                                onChange={(e) => setTime(e.target.value)}
+                                className="w-full"
+                            />
+                        </div>
+
+                        <div className="pt-2">
+                            <div className="relative">
+                                <Input
+                                    label="Inflation Rate (% expected)"
+                                    type="number"
+                                    placeholder="e.g. 6.0 (Optional)"
+                                    value={inflation}
+                                    onChange={(e) => setInflation(e.target.value)}
+                                    // Add right padding to prevent text from going under the badge
+                                    className="border-indigo-500/10 focus:border-indigo-500/40 pr-24"
+                                />
+                                {/* Position badge relative to input. Input label ~28px + border/padding. */}
+                                <div className="absolute right-3 top-[3.2rem] flex items-center pointer-events-none text-xs text-indigo-400 bg-indigo-500/10 px-2 py-1 rounded-full">
+                                    Real Value
+                                </div>
+                            </div>
+                            <p className="text-xs text-zinc-500 mt-2 ml-1">
+                                Enter existing inflation to see the <strong>real value</strong> of your returns.
+                            </p>
+                        </div>
+
+                        {(type === "CI" || type === "FD") && (
+                            <div className="flex flex-col space-y-2">
+                                <SearchableSelect
+                                    label="Compounding Frequency"
+                                    options={FREQUENCY_OPTIONS}
+                                    value={frequency}
+                                    onChange={setFrequency}
+                                />
+                            </div>
+                        )}
+
+                        <Button
+                            onClick={calculate}
+                            className="w-full h-14 mt-2 text-lg font-bold bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-400 hover:to-violet-400 text-white shadow-lg shadow-indigo-500/20"
+                        >
+                            Calculate Returns
+                            <ArrowRight className="w-5 h-5 ml-2" />
+                        </Button>
                     </div>
 
-                    {(type === "CI" || type === "FD") && (
-                        <div className="flex flex-col space-y-2">
-                            <label className="text-sm font-medium text-zinc-400 ml-1">Compounding Frequency</label>
-                            <select
-                                className="flex h-12 w-full appearance-none rounded-xl border border-white/10 bg-black/20 px-4 py-2 text-xl text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
-                                value={frequency}
-                                onChange={(e) => setFrequency(e.target.value)}
+                    <AnimatePresence>
+                        {result && (
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 10 }}
+                                className="flex flex-col gap-4"
                             >
-                                <option value="1" className="bg-zinc-900">Annually</option>
-                                <option value="2" className="bg-zinc-900">Half-Yearly</option>
-                                <option value="4" className="bg-zinc-900">Quarterly</option>
-                                <option value="12" className="bg-zinc-900">Monthly</option>
-                            </select>
-                        </div>
-                    )}
+                                {/* Wrapper for PDF Generation */}
+                                <div ref={resultRef} className="flex flex-col gap-4 bg-[#09090b] p-6 rounded-3xl border border-white/5 relative overflow-hidden">
+                                    {/* Background Glow */}
+                                    <div className="absolute top-0 right-0 p-32 bg-indigo-500/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none" />
 
-                    <Button onClick={calculate} className="mt-2 text-lg bg-indigo-500 hover:bg-indigo-600 shadow-indigo-500/20">
-                        Calculate Returns
-                    </Button>
+                                    {/* Input Summary - Horizontal on Desktop */}
+                                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-2 relative z-10">
+                                        <div className="flex flex-col gap-1 p-3 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-sm">
+                                            <span className="text-[10px] sm:text-xs text-zinc-500 uppercase tracking-wider">
+                                                {type === "RD" ? "Deposit" : type === "PPF" ? "Contrib." : "Principal"}
+                                            </span>
+                                            <span className="text-sm font-semibold text-white truncate">
+                                                {principal ? currencyFormatter(parseFloat(principal.replace(/,/g, ""))) : "₹0"}
+                                            </span>
+                                        </div>
+                                        <div className="flex flex-col gap-1 p-3 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-sm">
+                                            <span className="text-[10px] sm:text-xs text-zinc-500 uppercase tracking-wider">Rate</span>
+                                            <span className="text-sm font-semibold text-white">{rate}%</span>
+                                        </div>
+                                        <div className="flex flex-col gap-1 p-3 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-sm">
+                                            <span className="text-[10px] sm:text-xs text-zinc-500 uppercase tracking-wider">Duration</span>
+                                            <span className="text-sm font-semibold text-white">{time} Yrs</span>
+                                        </div>
+                                        <div className="flex flex-col gap-1 p-3 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-sm">
+                                            <span className="text-[10px] sm:text-xs text-zinc-500 uppercase tracking-wider">Inflation</span>
+                                            <span className="text-sm font-semibold text-white">{inflation || "0"}%</span>
+                                        </div>
+                                    </div>
+
+                                    {/* Main Result Block */}
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-10">
+                                        <Card className="bg-gradient-to-br from-indigo-500/10 via-violet-500/5 to-transparent border-indigo-500/20 flex flex-col items-center justify-center p-6 gap-2 sm:col-span-2">
+                                            <span className="text-zinc-400 text-sm font-medium">Maturity Amount</span>
+                                            <span className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">
+                                                {currencyFormatter(result.maturity)}
+                                            </span>
+                                        </Card>
+
+                                        <Card className="bg-white/[0.03] border-white/10 flex flex-col items-center justify-center p-4 gap-1">
+                                            <span className="text-zinc-500 text-xs uppercase tracking-wider">Total Interest</span>
+                                            <span className="text-xl font-bold text-emerald-400">
+                                                + {currencyFormatter(result.interest)}
+                                            </span>
+                                        </Card>
+                                        <Card className="bg-white/[0.03] border-white/10 flex flex-col items-center justify-center p-4 gap-1">
+                                            <span className="text-zinc-500 text-xs uppercase tracking-wider">Invested</span>
+                                            <span className="text-xl font-bold text-zinc-300">
+                                                {currencyFormatter(result.maturity - result.interest)}
+                                            </span>
+                                        </Card>
+                                    </div>
+
+                                    {result.realValue !== undefined && (
+                                        <Card className="bg-orange-500/10 border-orange-500/20 flex flex-col items-center justify-center py-5 gap-2 relative z-10">
+                                            <div className="flex items-center gap-2">
+                                                <TrendingUp className="w-4 h-4 text-orange-400" />
+                                                <span className="text-orange-200/60 text-sm font-medium">Inflation Adjusted Value</span>
+                                            </div>
+                                            <span className="text-3xl font-bold text-orange-400/90">
+                                                {currencyFormatter(result.realValue)}
+                                            </span>
+                                            <span className="text-xs text-zinc-500 text-center max-w-[250px]">
+                                                This is the purchasing power of your maturity amount in today's money.
+                                            </span>
+                                        </Card>
+                                    )}
+
+                                    {/* AI Insight Card */}
+                                    <Card className="bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border-indigo-500/20 p-5 relative z-10">
+                                        <div className="flex items-start gap-4">
+                                            <div className="p-2.5 bg-indigo-500/20 rounded-xl mt-0.5 shadow-inner shadow-indigo-500/20">
+                                                {loading ? (
+                                                    <Loader2 className="w-5 h-5 text-indigo-400 animate-spin" />
+                                                ) : (
+                                                    <Lightbulb className="w-5 h-5 text-indigo-400" />
+                                                )}
+                                            </div>
+                                            <div className="flex flex-col gap-1.5">
+                                                <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider flex items-center gap-2">
+                                                    AI Financial Insight
+                                                </span>
+                                                {loading ? (
+                                                    <div className="flex flex-col gap-2">
+                                                        <div className="h-4 w-3/4 bg-indigo-400/10 rounded animate-pulse" />
+                                                        <div className="h-4 w-1/2 bg-indigo-400/10 rounded animate-pulse" />
+                                                    </div>
+                                                ) : (
+                                                    <p className="text-zinc-300 text-sm leading-relaxed">
+                                                        {insight || "Calculating intelligent insights for your investment..."}
+                                                    </p>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </Card>
+                                </div>
+
+                                {/* Share Button Block */}
+                                <Button
+                                    variant="secondary"
+                                    onClick={handleSharePDF}
+                                    className="w-full flex items-center justify-center gap-2 bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 text-zinc-400 hover:text-white h-12"
+                                >
+                                    <Share2 className="w-4 h-4" /> Download / Share PDF Report
+                                </Button>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
-
-                <AnimatePresence>
-                    {result && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 10 }}
-                            className="flex flex-col gap-4"
-                        >
-                            {/* Wrapper for PDF Generation */}
-                            <div ref={resultRef} className="flex flex-col gap-4 bg-[#09090b] p-4 rounded-3xl border border-white/5">
-                                {/* Input Summary */}
-                                <div className="grid grid-cols-2 gap-3 mb-2">
-                                    <div className="flex flex-col gap-1 p-3 rounded-xl bg-white/5 border border-white/5">
-                                        <span className="text-xs text-zinc-500">
-                                            {type === "RD" ? "Monthly Deposit" : type === "PPF" ? "Annual Contribution" : "principal"}
-                                        </span>
-                                        <span className="text-sm font-semibold text-white">
-                                            {principal ? currencyFormatter(parseFloat(principal.replace(/,/g, ""))) : "₹0"}
-                                        </span>
-                                    </div>
-                                    <div className="flex flex-col gap-1 p-3 rounded-xl bg-white/5 border border-white/5">
-                                        <span className="text-xs text-zinc-500">Interest Rate</span>
-                                        <span className="text-sm font-semibold text-white">{rate}%</span>
-                                    </div>
-                                    <div className="flex flex-col gap-1 p-3 rounded-xl bg-white/5 border border-white/5">
-                                        <span className="text-xs text-zinc-500">Duration</span>
-                                        <span className="text-sm font-semibold text-white">{time} Years</span>
-                                    </div>
-                                    <div className="flex flex-col gap-1 p-3 rounded-xl bg-white/5 border border-white/5">
-                                        <span className="text-xs text-zinc-500">Inflation</span>
-                                        <span className="text-sm font-semibold text-white">{inflation || "0"}%</span>
-                                    </div>
-                                </div>
-
-                                <div className="grid grid-cols-2 gap-3">
-                                    <Card className="bg-white/5 border-white/10 flex flex-col items-center justify-center py-4 gap-1 p-3">
-                                        <span className="text-zinc-400 text-xs">Total Interest</span>
-                                        <span className="text-lg font-bold text-green-400">
-                                            {currencyFormatter(result.interest)}
-                                        </span>
-                                    </Card>
-                                    <Card className="bg-white/5 border-white/10 flex flex-col items-center justify-center py-4 gap-1 p-3">
-                                        <span className="text-zinc-400 text-xs">Invested Amount</span>
-                                        <span className="text-lg font-bold text-white">
-                                            {currencyFormatter(result.maturity - result.interest)}
-                                        </span>
-                                    </Card>
-                                </div>
-
-                                <Card className="bg-indigo-500/10 border-indigo-500/20 flex flex-col items-center justify-center py-8 gap-2">
-                                    <span className="text-zinc-400 text-sm">Maturity Amount</span>
-                                    <span className="text-4xl font-bold text-indigo-400">
-                                        {currencyFormatter(result.maturity)}
-                                    </span>
-                                </Card>
-
-                                {result.realValue !== undefined && (
-                                    <Card className="bg-orange-500/10 border-orange-500/20 flex flex-col items-center justify-center py-4 gap-1">
-                                        <span className="text-zinc-400 text-sm">Inflation Adjusted Value (Real Worth)</span>
-                                        <span className="text-2xl font-bold text-orange-400">
-                                            {currencyFormatter(result.realValue)}
-                                        </span>
-                                        <span className="text-xs text-zinc-500 mt-1 text-center">
-                                            This is what your money will be worth in today's terms.
-                                        </span>
-                                    </Card>
-                                )}
-
-                                {/* AI Insight Card */}
-                                <Card className="bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border-indigo-500/20 p-5">
-                                    <div className="flex items-start gap-3">
-                                        <div className="p-2 bg-indigo-500/20 rounded-full mt-1">
-                                            {loading ? (
-                                                <Loader2 className="w-5 h-5 text-indigo-400 animate-spin" />
-                                            ) : (
-                                                <Lightbulb className="w-5 h-5 text-indigo-400" />
-                                            )}
-                                        </div>
-                                        <div className="flex flex-col gap-1">
-                                            <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider">AI Insight</span>
-                                            {loading ? (
-                                                <p className="text-zinc-500 text-sm animate-pulse">Analyzing returns...</p>
-                                            ) : (
-                                                <p className="text-zinc-300 text-sm leading-relaxed">
-                                                    {insight || "Calculating insights..."}
-                                                </p>
-                                            )}
-                                        </div>
-                                    </div>
-                                </Card>
-                            </div>
-
-                            {/* Share Button Block */}
-                            <Button
-                                variant="secondary"
-                                onClick={handleSharePDF}
-                                className="w-full flex items-center justify-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-white"
-                            >
-                                <Share2 className="w-4 h-4" /> Share / Download PDF
-                            </Button>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
             </div>
         </CalculatorLayout>
     );
