@@ -1,7 +1,19 @@
 import type { NextConfig } from "next";
+import withPWA from "next-pwa";
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const config: NextConfig = {
+  output: "export", // Required for Capacitor
+  images: {
+    unoptimized: true, // Required for Static Export
+  },
 };
 
-export default nextConfig;
+const makePwa = withPWA({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === "development",
+});
+
+export default makePwa(config);
+
