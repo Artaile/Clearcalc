@@ -217,24 +217,24 @@ export default function Home() {
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6 w-full">
-              {cat.items.map((item) => (
-                <motion.div variants={item} key={item.title}>
-                  <Link href={item.href} className="block h-full">
+              {cat.items.map((navItem) => (
+                <motion.div variants={item} key={navItem.title}>
+                  <Link href={navItem.href} className="block h-full">
                     <Card className="h-full p-5 sm:p-6 flex flex-row items-start gap-4 sm:gap-6 group hover:border-indigo-500/30 hover:bg-white/[0.04] transition-all duration-500 relative overflow-hidden">
-                      <div className={`p-3 sm:p-4 rounded-2xl ${item.bg} ${item.color} group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shrink-0`}>
-                        <item.icon className="w-6 h-6 sm:w-6 sm:h-6" />
+                      <div className={`p-3 sm:p-4 rounded-2xl ${navItem.bg} ${navItem.color} group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shrink-0`}>
+                        <navItem.icon className="w-6 h-6 sm:w-6 sm:h-6" />
                       </div>
 
                       <div className="flex-1 flex flex-col gap-2">
                         <div className="flex flex-wrap items-center justify-between gap-2">
-                          <span className="font-bold text-white text-base sm:text-lg tracking-tight group-hover:text-indigo-300 transition-colors">{item.title}</span>
-                          {item.badge && (
+                          <span className="font-bold text-white text-base sm:text-lg tracking-tight group-hover:text-indigo-300 transition-colors">{navItem.title}</span>
+                          {navItem.badge && (
                             <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-white shadow-sm whitespace-nowrap">
-                              {item.badge}
+                              {navItem.badge}
                             </span>
                           )}
                         </div>
-                        <p className="text-zinc-500 text-sm leading-relaxed line-clamp-2 sm:line-clamp-none">{item.desc}</p>
+                        <p className="text-zinc-500 text-sm leading-relaxed line-clamp-2 sm:line-clamp-none">{navItem.desc}</p>
 
                         <div className="flex items-center gap-2 text-xs font-bold text-zinc-600 group-hover:text-indigo-400 mt-auto pt-2 sm:pt-4 transition-colors">
                           Launch Tool
