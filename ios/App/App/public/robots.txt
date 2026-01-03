@@ -1,0 +1,11 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /private/
+
+User-Agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /private/
+
+Sitemap: https://clearcalc.vercel.app/sitemap.xml
