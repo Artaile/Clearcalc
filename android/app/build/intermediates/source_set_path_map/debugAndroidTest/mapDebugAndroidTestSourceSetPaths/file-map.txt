@@ -1,7 +1,0 @@
-com.clearcalc.app.test.app-tracing-1.2.0-0 /Users/admin/.gradle/caches/8.14.3/transforms/dcfd9b438b7b1dc562c63a5efe9cf4a0/transformed/tracing-1.2.0/res
-com.clearcalc.app.test.app-core-1.7.0-1 /Users/admin/.gradle/caches/8.14.3/transforms/f3c8c5ab594c56ca9009b89515fbb52f/transformed/core-1.7.0/res
-com.clearcalc.app.test.app-androidTest-2 /Users/admin/Documents/Aile creation/Aile Dev/Smart Calculator/android/app/build/generated/res/resValues/androidTest/debug
-com.clearcalc.app.test.app-updated_navigation_xml-3 /Users/admin/Documents/Aile creation/Aile Dev/Smart Calculator/android/app/build/generated/updated_navigation_xml/debugAndroidTest
-com.clearcalc.app.test.app-mergeDebugAndroidTestResources-4 /Users/admin/Documents/Aile creation/Aile Dev/Smart Calculator/android/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
-com.clearcalc.app.test.app-mergeDebugAndroidTestResources-5 /Users/admin/Documents/Aile creation/Aile Dev/Smart Calculator/android/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
-com.clearcalc.app.test.app-debugAndroidTest-6 /Users/admin/Documents/Aile creation/Aile Dev/Smart Calculator/android/app/build/intermediates/merged_res/debugAndroidTest/mergeDebugAndroidTestResources
