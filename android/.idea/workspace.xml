@@ -10,13 +10,199 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53be1a83-dffc-426e-b6ba-d430d84e6e37" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/capacitor.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/capacitor.config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/capacitor.plugins.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/capacitor.plugins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/__next.__PAGE__.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/__next.__PAGE__.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/__next._full.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/__next._full.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/__next._head.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/__next._head.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/__next._index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/__next._index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/__next._tree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/__next._tree.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/158-3c48a9b68ab3d9a4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/605-6dead829d6968696.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/649-de8bf16f9582f107.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/app/banking/page-9270c1753d1094de.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/app/cash/page-82eb37176a813535.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/app/compare-loans/page-5acddb8422bb350d.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/app/currency/page-e1e6e54570996e18.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/app/discount/page-93611ee3b2af9c54.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/app/eligibility/page-a8e4a3a8a2d8313c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/app/emi/page-10204529726593e0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/app/gold/page-7a9c2beaafd3fe7a.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/app/gst/page-f654547b1694ac2c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/app/layout-dd5373a432a1fbcf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/app/loan/page-e314619156dd431e.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/app/page-58ebf847b99205b1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/app/profiles/page-4bbdc6c7ee1848d2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/app/profit/page-7f4fab6a2d17c266.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/app/units/page-cb9ede8c615f61c5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/app/words/page-e0ca592221b766d4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/chunks/webpack-a9728b682e4294b1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/css/4968143a5c11f86c.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/llrr8R_QWXXnmGRH3usdL/_buildManifest.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_next/static/llrr8R_QWXXnmGRH3usdL/_ssgManifest.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_not-found.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/_not-found.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_not-found.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/_not-found.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_not-found/__next._full.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/_not-found/__next._full.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_not-found/__next._head.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/_not-found/__next._head.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_not-found/__next._index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/_not-found/__next._index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_not-found/__next._not-found.__PAGE__.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/_not-found/__next._not-found.__PAGE__.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_not-found/__next._not-found.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/_not-found/__next._not-found.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/_not-found/__next._tree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/_not-found/__next._tree.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/banking.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/banking.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/banking.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/banking.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/banking/__next._full.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/banking/__next._full.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/banking/__next._head.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/banking/__next._head.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/banking/__next._index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/banking/__next._index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/banking/__next._tree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/banking/__next._tree.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/banking/__next.banking.__PAGE__.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/banking/__next.banking.__PAGE__.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/banking/__next.banking.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/banking/__next.banking.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/cash.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/cash.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/cash.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/cash.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/cash/__next._full.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/cash/__next._full.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/cash/__next._head.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/cash/__next._head.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/cash/__next._index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/cash/__next._index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/cash/__next._tree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/cash/__next._tree.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/cash/__next.cash.__PAGE__.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/cash/__next.cash.__PAGE__.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/cash/__next.cash.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/cash/__next.cash.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/compare-loans.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/compare-loans.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/compare-loans.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/compare-loans.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/compare-loans/__next._full.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/compare-loans/__next._full.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/compare-loans/__next._head.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/compare-loans/__next._head.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/compare-loans/__next._index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/compare-loans/__next._index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/compare-loans/__next._tree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/compare-loans/__next._tree.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/compare-loans/__next.compare-loans.__PAGE__.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/compare-loans/__next.compare-loans.__PAGE__.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/compare-loans/__next.compare-loans.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/compare-loans/__next.compare-loans.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/currency.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/currency.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/currency.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/currency.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/currency/__next._full.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/currency/__next._full.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/currency/__next._head.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/currency/__next._head.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/currency/__next._index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/currency/__next._index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/currency/__next._tree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/currency/__next._tree.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/currency/__next.currency.__PAGE__.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/currency/__next.currency.__PAGE__.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/currency/__next.currency.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/currency/__next.currency.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/discount.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/discount.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/discount.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/discount.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/discount/__next._full.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/discount/__next._full.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/discount/__next._head.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/discount/__next._head.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/discount/__next._index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/discount/__next._index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/discount/__next._tree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/discount/__next._tree.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/discount/__next.discount.__PAGE__.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/discount/__next.discount.__PAGE__.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/discount/__next.discount.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/discount/__next.discount.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/eligibility.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/eligibility.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/eligibility.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/eligibility.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/eligibility/__next._full.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/eligibility/__next._full.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/eligibility/__next._head.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/eligibility/__next._head.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/eligibility/__next._index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/eligibility/__next._index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/eligibility/__next._tree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/eligibility/__next._tree.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/eligibility/__next.eligibility.__PAGE__.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/eligibility/__next.eligibility.__PAGE__.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/eligibility/__next.eligibility.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/eligibility/__next.eligibility.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/emi.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/emi.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/emi.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/emi.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/emi/__next._full.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/emi/__next._full.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/emi/__next._head.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/emi/__next._head.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/emi/__next._index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/emi/__next._index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/emi/__next._tree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/emi/__next._tree.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/emi/__next.emi.__PAGE__.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/emi/__next.emi.__PAGE__.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/emi/__next.emi.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/emi/__next.emi.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/gold.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/gold.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/gold.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/gold.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/gold/__next._full.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/gold/__next._full.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/gold/__next._head.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/gold/__next._head.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/gold/__next._index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/gold/__next._index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/gold/__next._tree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/gold/__next._tree.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/gold/__next.gold.__PAGE__.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/gold/__next.gold.__PAGE__.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/gold/__next.gold.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/gold/__next.gold.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/gst.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/gst.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/gst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/gst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/gst/__next._full.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/gst/__next._full.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/gst/__next._head.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/gst/__next._head.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/gst/__next._index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/gst/__next._index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/gst/__next._tree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/gst/__next._tree.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/gst/__next.gst.__PAGE__.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/gst/__next.gst.__PAGE__.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/gst/__next.gst.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/gst/__next.gst.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/loan.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/loan.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/loan.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/loan.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/loan/__next._full.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/loan/__next._full.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/loan/__next._head.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/loan/__next._head.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/loan/__next._index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/loan/__next._index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/loan/__next._tree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/loan/__next._tree.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/loan/__next.loan.__PAGE__.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/loan/__next.loan.__PAGE__.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/loan/__next.loan.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/loan/__next.loan.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/profiles.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/profiles.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/profiles.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/profiles.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/profiles/__next._full.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/profiles/__next._full.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/profiles/__next._head.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/profiles/__next._head.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/profiles/__next._index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/profiles/__next._index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/profiles/__next._tree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/profiles/__next._tree.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/profiles/__next.profiles.__PAGE__.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/profiles/__next.profiles.__PAGE__.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/profiles/__next.profiles.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/profiles/__next.profiles.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/profit.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/profit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/profit.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/profit.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/profit/__next._full.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/profit/__next._full.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/profit/__next._head.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/profit/__next._head.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/profit/__next._index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/profit/__next._index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/profit/__next._tree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/profit/__next._tree.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/profit/__next.profit.__PAGE__.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/profit/__next.profit.__PAGE__.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/profit/__next.profit.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/profit/__next.profit.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/sitemap.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/sw.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/sw.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/units.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/units.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/units.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/units.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/units/__next._full.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/units/__next._full.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/units/__next._head.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/units/__next._head.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/units/__next._index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/units/__next._index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/units/__next._tree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/units/__next._tree.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/units/__next.units.__PAGE__.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/units/__next.units.__PAGE__.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/units/__next.units.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/units/__next.units.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/words.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/words.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/words.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/words.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/words/__next._full.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/words/__next._full.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/words/__next._head.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/words/__next._head.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/words/__next._index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/words/__next._index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/words/__next._tree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/words/__next._tree.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/words/__next.words.__PAGE__.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/words/__next.words.__PAGE__.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/words/__next.words.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/words/__next.words.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/.transforms/995d0ba87e539c541cf686e40ce00fb1/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/.transforms/fd86c113dcd131dfe9bb4ddd54025125/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/.transforms/fd86c113dcd131dfe9bb4ddd54025125/transformed/bundleLibRuntimeToDirDebug/desugar_graph.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output-metadata.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/aar_metadata/debug/writeDebugAarMetadata/aar-metadata.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/annotation_processor_list/debug/javaPreCompileDebug/annotationProcessors.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/compile_symbol_list/debug/generateDebugRFile/R.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/incremental/debug/packageDebugResources/merger.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/incremental/mergeDebugAssets/merger.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/incremental/mergeDebugShaders/merger.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/local_only_symbol_list/debug/parseDebugLocalResources/R-def.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/manifest_merge_blame_file/debug/processDebugManifest/manifest-merger-blame-debug-report.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/navigation_json/debug/extractDeepLinksDebug/navigation.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/nested_resources_validation_report/debug/generateDebugResources/nestedResourcesValidationReport.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/symbol_list_with_package_name/debug/generateDebugRFile/package-aware-r.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/cordova.variables.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/capacitor-cordova-android-plugins/cordova.variables.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../public/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/app/robots.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/robots.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/app/sitemap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/sitemap.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../public/sw.js" beforeDir="false" afterPath="$PROJECT_DIR$/../public/sw.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app/cash/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/cash/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app/compare-loans/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/compare-loans/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app/emi/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/emi/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app/gold/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/gold/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app/loan/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/loan/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/lib/ai.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/lib/ai.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,9 +224,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="37iMhUtiCNLS4Roix3yrJrcmcMI" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -55,9 +241,10 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "android.gradle.sync.needed": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "Clearcalc__v0.1__mobile__v0.1",
+    "git-widget-placeholder": "Clearcalc__v0.1",
     "kotlin-language-version-configured": "true"
   }
 }]]></component>

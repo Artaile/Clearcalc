@@ -10,6 +10,7 @@ import { Lightbulb, Loader2, Trophy, CheckCircle2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
+import { InputWithToggle, InputWithUnitToggle } from "@/components/ui/InputWithUnitToggle";
 
 type LoanInput = {
     amount: string;
@@ -17,6 +18,7 @@ type LoanInput = {
     tenure: string;
     tenureMode: "Years" | "Months";
     processingFee: string;
+    processingFeeMode: "percent" | "flat";
 };
 
 type LoanResult = {
@@ -30,8 +32,8 @@ type LoanResult = {
 };
 
 export default function CompareLoans() {
-    const [loan1, setLoan1] = useState<LoanInput>({ amount: "", rate: "", tenure: "", tenureMode: "Years", processingFee: "" });
-    const [loan2, setLoan2] = useState<LoanInput>({ amount: "", rate: "", tenure: "", tenureMode: "Years", processingFee: "" });
+    const [loan1, setLoan1] = useState<LoanInput>({ amount: "", rate: "", tenure: "", tenureMode: "Years", processingFee: "", processingFeeMode: "percent" });
+    const [loan2, setLoan2] = useState<LoanInput>({ amount: "", rate: "", tenure: "", tenureMode: "Years", processingFee: "", processingFeeMode: "percent" });
     const [result1, setResult1] = useState<LoanResult | null>(null);
     const [result2, setResult2] = useState<LoanResult | null>(null);
 
@@ -49,8 +51,14 @@ export default function CompareLoans() {
             n = n * 12;
         }
 
-        const feePercent = parseFloat(loan.processingFee) || 0;
-        const feeAmount = (p * feePercent) / 100;
+
+        const feeInput = parseFloat(loan.processingFee) || 0;
+        let feeAmount = 0;
+        if (loan.processingFeeMode === "flat") {
+            feeAmount = feeInput;
+        } else {
+            feeAmount = (p * feeInput) / 100;
+        }
 
         const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
         const totalPayment = emi * n;
@@ -85,8 +93,8 @@ export default function CompareLoans() {
             const prompt = constructPrompt(
                 "Compare Loans",
                 {
-                    Loan1: `P: ${loan1.amount}, R: ${loan1.rate}, T: ${loan1.tenure} ${loan1.tenureMode}, Fee: ${loan1.processingFee}%`,
-                    Loan2: `P: ${loan2.amount}, R: ${loan2.rate}, T: ${loan2.tenure} ${loan2.tenureMode}, Fee: ${loan2.processingFee}%`
+                    Loan1: `P: ${loan1.amount}, R: ${loan1.rate}, T: ${loan1.tenure} ${loan1.tenureMode}, Fee: ${loan1.processingFee} (${loan1.processingFeeMode})`,
+                    Loan2: `P: ${loan2.amount}, R: ${loan2.rate}, T: ${loan2.tenure} ${loan2.tenureMode}, Fee: ${loan2.processingFee} (${loan2.processingFeeMode})`
                 },
                 {
                     BetterOption: betterLoan,
@@ -104,10 +112,10 @@ export default function CompareLoans() {
 
     const currencyFormatter = (val: number) => new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(val);
 
-    const updateLoan1 = (field: keyof LoanInput, val: string) => setLoan1(prev => ({ ...prev, [field]: val }));
-    const updateLoan2 = (field: keyof LoanInput, val: string) => setLoan2(prev => ({ ...prev, [field]: val }));
+    const updateLoan1 = (field: keyof LoanInput, val: any) => setLoan1(prev => ({ ...prev, [field]: val }));
+    const updateLoan2 = (field: keyof LoanInput, val: any) => setLoan2(prev => ({ ...prev, [field]: val }));
 
-    const renderLoanInput = (index: number, loan: LoanInput, update: (field: keyof LoanInput, val: string) => void, colorClass: string, bgClass: string) => (
+    const renderLoanInput = (index: number, loan: LoanInput, update: (field: keyof LoanInput, val: any) => void, colorClass: string, bgClass: string) => (
         <div className="flex flex-col gap-3 p-4 bg-white/5 rounded-xl border border-white/5">
             <div className="flex items-center gap-2 mb-2">
                 <div className={`w-6 h-6 rounded-full ${bgClass} flex items-center justify-center ${colorClass} font-bold text-xs`}>{index}</div>
@@ -130,37 +138,30 @@ export default function CompareLoans() {
                 placeholder="8.5"
             />
 
-            <div className="flex flex-col gap-2">
-                <label className="text-sm font-medium text-zinc-400 ml-1">Tenure</label>
-                <div className="flex bg-black/20 p-1 rounded-xl border border-white/10 w-fit mb-1">
-                    <button
-                        onClick={() => update("tenureMode", "Years")}
-                        className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${loan.tenureMode === "Years" ? "bg-white/10 text-white" : "text-zinc-500 hover:text-zinc-300"}`}
-                    >
-                        Years
-                    </button>
-                    <button
-                        onClick={() => update("tenureMode", "Months")}
-                        className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${loan.tenureMode === "Months" ? "bg-white/10 text-white" : "text-zinc-500 hover:text-zinc-300"}`}
-                    >
-                        Months
-                    </button>
-                </div>
-                <Input
-                    type="number"
-                    value={loan.tenure}
-                    onChange={(e) => update("tenure", e.target.value)}
-                    placeholder={loan.tenureMode === "Years" ? "20" : "240"}
-                    className="mt-0"
-                />
-            </div>
+            <InputWithToggle
+                label="Tenure"
+                value={loan.tenure}
+                onChange={(val) => update("tenure", val)}
+                toggleValue={loan.tenureMode}
+                onToggleChange={(mode) => update("tenureMode", mode)}
+                toggleOptions={[
+                    { label: "Years", value: "Years" },
+                    { label: "Months", value: "Months" }
+                ]}
+                placeholder={loan.tenureMode === "Years" ? "20" : "240"}
+            />
 
-            <Input
-                label="Proc. Fee (%)"
+            <InputWithToggle
+                label="Processing Fee"
                 value={loan.processingFee}
-                onChange={(e) => update("processingFee", e.target.value)}
-                type="number"
-                placeholder="0.5"
+                onChange={(val) => update("processingFee", val)}
+                toggleValue={loan.processingFeeMode}
+                onToggleChange={(mode) => update("processingFeeMode", mode)}
+                toggleOptions={[
+                    { label: "%", value: "percent" },
+                    { label: "INR", value: "flat" }
+                ]}
+                placeholder={loan.processingFeeMode === "percent" ? "0.5" : "5000"}
             />
         </div>
     );

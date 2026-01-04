@@ -2,5 +2,8 @@
 	"appId": "com.clearcalc.app",
 	"appName": "ClearCalc",
 	"webDir": "out",
-	"packageClassList": []
+	"bundledWebRuntime": false,
+	"packageClassList": [
+		"AppPlugin"
+	]
 }

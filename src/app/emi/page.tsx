@@ -18,6 +18,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
 import { cn } from "@/lib/utils";
+import { InputWithToggle, InputWithUnitToggle } from "@/components/ui/InputWithUnitToggle";
 
 
 export default function EMICalculator() {
@@ -26,6 +27,7 @@ export default function EMICalculator() {
     const [tenure, setTenure] = useState("");
     const [tenureMode, setTenureMode] = useState<"Years" | "Months">("Years");
     const [processingFee, setProcessingFee] = useState("");
+    const [processingFeeMode, setProcessingFeeMode] = useState<"percent" | "flat">("percent");
     const [emi, setEmi] = useState<number | null>(null);
     const [results, setResults] = useState<any>(null); // Store detailed results
     const [schedule, setSchedule] = useState<any[]>([]);
@@ -47,9 +49,14 @@ export default function EMICalculator() {
             n = n * 12;
         }
 
-        // Fee calculation (assuming % input)
-        const feePercent = parseFloat(processingFee) || 0;
-        const feeAmount = (p * feePercent) / 100;
+        // Fee calculation
+        const feeInput = parseFloat(processingFee) || 0;
+        let feeAmount = 0;
+        if (processingFeeMode === "percent") {
+            feeAmount = (p * feeInput) / 100;
+        } else {
+            feeAmount = feeInput;
+        }
 
         const emiValue = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
         setEmi(emiValue);
@@ -99,7 +106,7 @@ export default function EMICalculator() {
         setInsight(null);
         const prompt = constructPrompt(
             "EMI Calculator",
-            { LoanAmount: p, InterestRate: rate, Tenure: `${tenure} ${tenureMode}`, ProcessingFee: feeAmount },
+            { LoanAmount: p, InterestRate: rate, Tenure: `${tenure} ${tenureMode}`, ProcessingFee: feeAmount, ProcessingFeeMode: processingFeeMode },
             { MonthlyEMI: emiValue.toFixed(2), TotalPayment: totalPayment.toFixed(2), TotalInterest: totalInterest.toFixed(2) }
         );
 
@@ -133,45 +140,30 @@ export default function EMICalculator() {
                             onChange={(e) => setRate(e.target.value)}
                         />
 
-                        <div className="flex flex-col gap-2">
-                            <label className="text-sm font-medium text-zinc-400 ml-1">Tenure</label>
-                            <div className="flex gap-4">
-                                <div className="flex bg-black/40 p-1 rounded-2xl border border-white/5 w-fit h-14 items-center">
-                                    <button
-                                        onClick={() => setTenureMode("Years")}
-                                        className={cn(
-                                            "px-4 py-2 rounded-xl text-sm font-medium transition-all h-full",
-                                            tenureMode === "Years" ? "bg-white/10 text-white shadow-sm" : "text-zinc-500 hover:text-zinc-300"
-                                        )}
-                                    >
-                                        Years
-                                    </button>
-                                    <button
-                                        onClick={() => setTenureMode("Months")}
-                                        className={cn(
-                                            "px-4 py-2 rounded-xl text-sm font-medium transition-all h-full",
-                                            tenureMode === "Months" ? "bg-white/10 text-white shadow-sm" : "text-zinc-500 hover:text-zinc-300"
-                                        )}
-                                    >
-                                        Months
-                                    </button>
-                                </div>
-                                <Input
-                                    type="number"
-                                    placeholder={tenureMode === "Years" ? "e.g. 5" : "e.g. 60"}
-                                    value={tenure}
-                                    onChange={(e) => setTenure(e.target.value)}
-                                    className="mt-0 flex-1"
-                                />
-                            </div>
-                        </div>
+                        <InputWithToggle
+                            label="Tenure"
+                            value={tenure}
+                            onChange={(val) => setTenure(val)}
+                            toggleValue={tenureMode}
+                            onToggleChange={setTenureMode}
+                            toggleOptions={[
+                                { label: "Years", value: "Years" },
+                                { label: "Months", value: "Months" }
+                            ]}
+                            placeholder={tenureMode === "Years" ? "e.g. 5" : "e.g. 60"}
+                        />
 
-                        <Input
-                            label="Processing Fee (%)"
-                            type="number"
-                            placeholder="e.g. 1"
+                        <InputWithToggle
+                            label="Processing Fee"
                             value={processingFee}
-                            onChange={(e) => setProcessingFee(e.target.value)}
+                            onChange={(val) => setProcessingFee(val)}
+                            toggleValue={processingFeeMode}
+                            onToggleChange={setProcessingFeeMode}
+                            toggleOptions={[
+                                { label: "%", value: "percent" },
+                                { label: "INR", value: "flat" }
+                            ]}
+                            placeholder={processingFeeMode === "percent" ? "e.g. 1" : "e.g. 5000"}
                         />
 
                         <Button

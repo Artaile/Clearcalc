@@ -1,22 +1,22 @@
 {
-    "name": "ClearCalc - Smart Financial Tools",
-    "short_name": "ClearCalc",
-    "description": "Premium financial calculators for EMI, GST, Banking, Gold, and more.",
+    "name": "Smart Financial Calculator",
+    "short_name": "SmartCalc",
+    "description": "All-in-One Financial Calculator with AI Insights",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#09090b",
-    "theme_color": "#09090b",
-    "orientation": "portrait",
+    "background_color": "#0a0a0a",
+    "theme_color": "#0a0a0a",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png",
+            "src": "/icon.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/android-chrome-512x512.png",
+            "src": "/icon.png",
             "sizes": "512x512",
             "type": "image/png"
         }
-    ]
+    ],
+    "orientation": "portrait"
 }

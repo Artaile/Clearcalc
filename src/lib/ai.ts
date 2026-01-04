@@ -45,6 +45,7 @@ export function constructPrompt(type: string, inputs: Record<string, any>, resul
     Give a financial suggestion.
     Max 2-3 short sentences.
     Tone: Professional but friendly, max 1 emoji.
+    IMPORTANT: Always use '₹' (Indian Rupee symbol) for ANY money values. NEVER use '$'.
     No advisor approach/disclaimers.
   `;
 }

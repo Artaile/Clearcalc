@@ -3,6 +3,7 @@
 import { CalculatorLayout } from "@/components/calculators/CalculatorLayout";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { InputWithToggle, InputWithUnitToggle } from "@/components/ui/InputWithUnitToggle";
 import { Card } from "@/components/ui/Card";
 import { useState } from "react";
 import { constructPrompt, generateInsight } from "@/lib/ai";
@@ -16,6 +17,7 @@ export default function LoanCalculator() {
     const [tenure, setTenure] = useState("");
     const [tenureMode, setTenureMode] = useState<"Years" | "Months">("Years");
     const [processingFee, setProcessingFee] = useState("");
+    const [processingFeeMode, setProcessingFeeMode] = useState<"percent" | "flat">("percent");
     const [emi, setEmi] = useState<number | null>(null);
     const [results, setResults] = useState<any>(null);
     const [schedule, setSchedule] = useState<any[]>([]);
@@ -38,8 +40,13 @@ export default function LoanCalculator() {
         }
 
         // Fee calculation
-        const feePercent = parseFloat(processingFee) || 0;
-        const feeAmount = (p * feePercent) / 100;
+        const feeInput = parseFloat(processingFee) || 0;
+        let feeAmount = 0;
+        if (processingFeeMode === "percent") {
+            feeAmount = (p * feeInput) / 100;
+        } else {
+            feeAmount = feeInput;
+        }
 
         const emiValue = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
         setEmi(emiValue);
@@ -88,7 +95,7 @@ export default function LoanCalculator() {
         setInsight(null);
         const prompt = constructPrompt(
             "Loan Calculator",
-            { LoanAmount: p, InterestRate: rate, Tenure: `${tenure} ${tenureMode}`, ProcessingFee: feeAmount },
+            { LoanAmount: p, InterestRate: rate, Tenure: `${tenure} ${tenureMode}`, ProcessingFee: feeAmount, ProcessingFeeMode: processingFeeMode },
             { MonthlyEMI: emiValue.toFixed(2), TotalPayment: totalPayment.toFixed(2), TotalInterest: totalInterest.toFixed(2) }
         );
 
@@ -121,37 +128,30 @@ export default function LoanCalculator() {
                             onChange={(e) => setRate(e.target.value)}
                         />
 
-                        <div className="flex flex-col gap-2">
-                            <label className="text-sm font-medium text-zinc-400 ml-1">Tenure</label>
-                            <div className="flex bg-black/20 p-1 rounded-xl border border-white/10 w-fit mb-1">
-                                <button
-                                    onClick={() => setTenureMode("Years")}
-                                    className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${tenureMode === "Years" ? "bg-white/10 text-white" : "text-zinc-500 hover:text-zinc-300"}`}
-                                >
-                                    Years
-                                </button>
-                                <button
-                                    onClick={() => setTenureMode("Months")}
-                                    className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${tenureMode === "Months" ? "bg-white/10 text-white" : "text-zinc-500 hover:text-zinc-300"}`}
-                                >
-                                    Months
-                                </button>
-                            </div>
-                            <Input
-                                type="number"
-                                placeholder={tenureMode === "Years" ? "e.g. 5" : "e.g. 60"}
-                                value={tenure}
-                                onChange={(e) => setTenure(e.target.value)}
-                                className="mt-0"
-                            />
-                        </div>
+                        <InputWithToggle
+                            label="Tenure"
+                            value={tenure}
+                            onChange={(val) => setTenure(val)}
+                            toggleValue={tenureMode}
+                            onToggleChange={setTenureMode}
+                            toggleOptions={[
+                                { label: "Years", value: "Years" },
+                                { label: "Months", value: "Months" }
+                            ]}
+                            placeholder={tenureMode === "Years" ? "e.g. 5" : "e.g. 60"}
+                        />
 
-                        <Input
-                            label="Processing Fee (%)"
-                            type="number"
-                            placeholder="e.g. 0.5"
+                        <InputWithToggle
+                            label="Processing Fee"
                             value={processingFee}
-                            onChange={(e) => setProcessingFee(e.target.value)}
+                            onChange={(val) => setProcessingFee(val)}
+                            toggleValue={processingFeeMode}
+                            onToggleChange={setProcessingFeeMode}
+                            toggleOptions={[
+                                { label: "%", value: "percent" },
+                                { label: "INR", value: "flat" }
+                            ]}
+                            placeholder={processingFeeMode === "percent" ? "e.g. 0.5" : "e.g. 5000"}
                         />
 
                         <Button onClick={calculate} className="mt-2 text-lg">

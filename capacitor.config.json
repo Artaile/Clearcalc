@@ -1,0 +1,6 @@
+{
+    "appId": "com.clearcalc.app",
+    "appName": "ClearCalc",
+    "webDir": "out",
+    "bundledWebRuntime": false
+}

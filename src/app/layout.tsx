@@ -85,6 +85,8 @@ export const viewport = {
   maximumScale: 5,
 };
 
+import { BackButtonHandler } from "@/components/mobile/BackButtonHandler";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -93,6 +95,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
+        {/* ... metadata scripts ... */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -120,6 +123,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${outfit.className} min-h-screen bg-[#09090b]`}>
+        <BackButtonHandler />
         <main className="max-w-[1080px] mx-auto px-4 py-8 sm:py-12">
           {children}
         </main>

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Card } from "@/components/ui/Card";
 import { SearchableSelect } from "@/components/ui/SearchableSelect";
+import { InputWithToggle, InputWithUnitToggle } from "@/components/ui/InputWithUnitToggle";
 import { useState, useEffect } from "react";
 import { constructPrompt, generateInsight } from "@/lib/ai";
 import {
@@ -225,75 +226,37 @@ export default function GoldCalculator() {
                             />
                         </div>
 
-                        {/* Making Charges */}
-                        <div className="flex flex-col gap-2">
-                            <label className="text-sm font-medium text-zinc-400 ml-1">Making Charges (MC)</label>
-                            <div className="flex gap-4">
-                                <div className="grid grid-cols-2 bg-black/40 p-1 rounded-2xl border border-white/5 w-[160px] h-14 items-center shrink-0">
-                                    <button
-                                        onClick={() => setMcType("percentage")}
-                                        className={cn(
-                                            "h-full rounded-xl text-sm font-medium transition-all flex items-center justify-center",
-                                            mcType === "percentage" ? "bg-white/10 text-white shadow-sm" : "text-zinc-500 hover:text-zinc-300"
-                                        )}
-                                    >
-                                        %
-                                    </button>
-                                    <button
-                                        onClick={() => setMcType("flat")}
-                                        className={cn(
-                                            "h-full rounded-xl text-sm font-medium transition-all flex items-center justify-center",
-                                            mcType === "flat" ? "bg-white/10 text-white shadow-sm" : "text-zinc-500 hover:text-zinc-300"
-                                        )}
-                                    >
-                                        {currency || "Flat"}
-                                    </button>
-                                </div>
-                                <Input
-                                    type={mcType === "percentage" ? "number" : "text"}
-                                    inputMode="decimal"
-                                    placeholder={mcType === "percentage" ? "e.g. 12" : "e.g. 2,500"}
-                                    value={mcValue}
-                                    onChange={handleMcChange}
-                                    className="mt-0 flex-1"
-                                />
-                            </div>
-                        </div>
+                        <InputWithToggle
+                            label="Making Charges (MC)"
+                            value={mcValue}
+                            onChange={(val) => {
+                                const v = val.replace(/,/g, "");
+                                if (isNaN(Number(v)) && v !== "") return;
+                                setMcValue(v === "" ? "" : mcType === "flat" ? formatInput(v) : v);
+                            }}
+                            toggleValue={mcType === "percentage" ? "percent" : "flat"}
+                            onToggleChange={(u) => setMcType(u === "percent" ? "percentage" : "flat")}
+                            toggleOptions={[
+                                { label: "%", value: "percent" },
+                                { label: "INR", value: "flat" }
+                            ]}
+                            placeholder={mcType === "percentage" ? "e.g. 12" : "e.g. 2,500"}
+                        />
 
                         {/* Wastage (Optional based on country) */}
                         {currentConfig.showWastage && (
-                            <div className="flex flex-col gap-2">
-                                <label className="text-sm font-medium text-zinc-400 ml-1">Wastage / VA</label>
-                                <div className="flex gap-4">
-                                    <div className="grid grid-cols-2 bg-black/40 p-1 rounded-2xl border border-white/5 w-[160px] h-14 items-center shrink-0">
-                                        <button
-                                            onClick={() => setWastageType("percentage")}
-                                            className={cn(
-                                                "h-full rounded-xl text-sm font-medium transition-all flex items-center justify-center",
-                                                wastageType === "percentage" ? "bg-white/10 text-white shadow-sm" : "text-zinc-500 hover:text-zinc-300"
-                                            )}
-                                        >
-                                            %
-                                        </button>
-                                        <button
-                                            onClick={() => setWastageType("grams")}
-                                            className={cn(
-                                                "h-full rounded-xl text-sm font-medium transition-all flex items-center justify-center",
-                                                wastageType === "grams" ? "bg-white/10 text-white shadow-sm" : "text-zinc-500 hover:text-zinc-300"
-                                            )}
-                                        >
-                                            g
-                                        </button>
-                                    </div>
-                                    <Input
-                                        type="number"
-                                        placeholder={wastageType === "percentage" ? "e.g. 5" : "e.g. 0.5"}
-                                        value={wastageValue}
-                                        onChange={(e) => setWastageValue(e.target.value)}
-                                        className="mt-0 flex-1"
-                                    />
-                                </div>
-                            </div>
+                            <InputWithToggle
+                                label="Wastage / VA"
+                                value={wastageValue}
+                                onChange={(val) => setWastageValue(val)}
+                                toggleValue={wastageType}
+                                onToggleChange={setWastageType}
+                                toggleOptions={[
+                                    { label: "%", value: "percentage" },
+                                    { label: "g", value: "grams" }
+                                ]}
+                                placeholder={wastageType === "percentage" ? "e.g. 5" : "e.g. 0.5"}
+                            />
                         )}
 
                         {/* Tax Section */}
