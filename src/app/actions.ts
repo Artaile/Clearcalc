@@ -6,7 +6,7 @@ export async function getFinancialInsight(prompt: string) {
     const apiKey = process.env.GROQ_API_KEY;
 
     if (!apiKey) {
-        return "Legacy API Key found. Please update .env.local with GROQ_API_KEY.";
+        return "API Key missing. Please add GROQ_API_KEY to your environment variables.";
     }
 
     try {
