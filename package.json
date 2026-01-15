@@ -7,9 +7,9 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
-    "build:mobile": "next build --webpack && npx cap sync",
-    "android": "next build --webpack && npx cap sync android && npx cap open android",
-    "ios": "next build --webpack && npx cap sync ios && npx cap open ios"
+    "build:mobile": "APP_BUILD_TARGET=mobile next build --webpack && npx cap sync",
+    "android": "APP_BUILD_TARGET=mobile next build --webpack && npx cap sync android && npx cap open android",
+    "ios": "APP_BUILD_TARGET=mobile next build --webpack && npx cap sync ios && npx cap open ios"
   },
   "dependencies": {
     "@capacitor/android": "^7.0.0",

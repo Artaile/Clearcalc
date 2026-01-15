@@ -1,10 +1,12 @@
 import type { NextConfig } from "next";
 import withPWA from "next-pwa";
 
+const isMobile = process.env.APP_BUILD_TARGET === "mobile";
+
 const config: NextConfig = {
-  output: "export", // Required for Capacitor
+  output: isMobile ? "export" : undefined, // Required for Capacitor
   images: {
-    unoptimized: true, // Required for Static Export
+    unoptimized: isMobile, // Required for Static Export
   },
 };
 
